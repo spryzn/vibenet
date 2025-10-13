@@ -1,26 +1,99 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer theme {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-purple-1: #7857FF;
+    --color-purple-2: #1D1928;
+    --color-pink-1: #FF0073;
+    --color-light-1: #FFFFFF;
+    --color-light-2: #808080;
+    --color-light-3: #626067;
+    --color-dark-1: #121212;
+    --color-dark-2: #34303E;
+    --color-blue-1: #016FD5;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Clerk Auth forms */
+  .cl-formButtonPrimary {
+    background-color: var(--color-purple-1);
+  }
+  .cl-formButtonPrimary:hover {
+    background-color: var(--color-pink-1);
+  }
+  .cl-footerActionLink {
+    color: var(--color-purple-1);
+  }
+  .cl-footerActionLink:hover {
+    color: var(--color-pink-1);
+  }
+
+  /* Profile Info */
+  .input {
+    background-color: var(--color-dark-1);
+    color: var(--color-light-1);
+    @apply p-2.5 rounded-lg border-none focus:outline-none mt-3;
+  }
+
+  /* Top Bar */
+  .search-bar {
+    background-color: var(--color-dark-2);
+    color: var(--color-light-1);
+    /* Manually added font styles instead of using '@apply text-small-semibold' */
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 140%;
+    @apply w-full py-3 px-5 rounded-lg focus:outline-none;
+  }
+  .create-post-btn {
+    background-image: linear-gradient(to left, var(--color-pink-1), var(--color-purple-1));
+    color: var(--color-light-1);
+    /* Manually added font styles instead of using '@apply text-small-semibold' */
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 140%;
+    @apply flex items-center gap-2 rounded-lg py-2.5 px-3 max-md:hidden;
+  }
+  .search-icon {
+    color: var(--color-light-1);
+    @apply absolute top-2 right-2 cursor-pointer;
+  }
+  .search-icon:hover {
+    color: var(--color-pink-1);
+  }
+
+  /* Tabs */
+  .tab {
+    color: var(--color-light-1);
+    /* Manually added font styles instead of using '@apply text-small-bold' */
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 140%;
+    @apply px-4 py-2 rounded-lg;
+  }
+}
+
+@layer utilities {
+  /* Your custom font sizes and scrollbar are now utility classes */
+  /* Typography */
+  .text-heading1-bold { font-size: 36px; font-weight: 700; line-height: 100%; }
+  .text-heading2-bold { font-size: 30px; font-weight: 700; line-height: 140%; }
+  .text-heading3-bold { font-size: 24px; font-weight: 700; line-height: 140%; }
+  .text-heading4-bold { font-size: 20px; font-weight: 700; line-height: 140%; }
+  .text-body-bold { font-size: 18px; font-weight: 700; line-height: 140%; }
+  .text-body-normal { font-size: 18px; font-weight: 500; line-height: 140%; }
+  .text-base-bold { font-size: 16px; font-weight: 600; line-height: 140%; }
+  .text-small-bold { font-size: 14px; font-weight: 600; line-height: 140%; }
+  .text-small-semibold { font-size: 14px; font-weight: 500; line-height: 140%; }
+  .text-subtle-medium { font-size: 12px; font-weight: 500; line-height: 16px; }
+  .text-tiny-medium { font-size: 10px; font-weight: 500; line-height: 140%; }
+  .text-x-small-semibold { font-size: 7px; font-weight: 600; line-height: 9.318px; }
+
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+    border-radius: 2px;
+  }
 }
